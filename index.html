@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator Hub</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23f3ecfd%22/><text x=%2250%22 y=%2265%22 font-size=%2255%22 text-anchor=%22middle%22 fill=%22%232aab93%22 font-family=%22Arial%22>=</text></svg>">
+
+<!-- Tailwind CSS (utility-first framework) -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="min-h-screen flex items-start justify-center p-3 sm:p-4">
+
+<div class="w-full max-w-5xl app-shell">
+
+  <header class="text-center mb-4 sm:mb-6 relative">
+    <span class="sparkle s1" style="left:8%; top:-6px;">✨</span>
+    <span class="sparkle s2" style="right:10%; top:2px;">✨</span>
+    <span class="sparkle s3" style="right:22%; bottom:-10px;">✦</span>
+    <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-[#3d3557] tracking-wide">Calculator Hub</h1>
+    <p class="text-xs sm:text-sm text-[#a89bc4] mt-1">11 calculators, each its own page — pick a tool to open it</p>
+  </header>
+
+  <!-- ============================================
+       HUB — search + tool picker cards
+       ============================================ -->
+  <section>
+    <div class="max-w-xl mx-auto mb-5">
+      <input
+        id="hubSearch"
+        type="text"
+        placeholder="Search a calculator… (e.g. BMI, EMI, age)"
+        class="w-full bg-white/80 text-[#3d3557] rounded-full px-5 py-3 text-sm outline-none border border-[#e8def7] focus:border-violet-400 shadow-lg placeholder:text-[#b3a8ce]"
+      />
+    </div>
+
+    <div id="hubGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <a href="basic.html" class="hub-card" data-name="basic simple plus minus arithmetic">
+        <span class="hub-icon bg-amber-500/20 text-amber-600">+&minus;</span>
+        <span class="hub-title">Basic Calculator</span>
+        <span class="hub-desc">Everyday add, subtract, multiply, divide.</span>
+      </a>
+
+      <a href="tip.html" class="hub-card" data-name="tip bill split restaurant glassmorphic">
+        <span class="hub-icon bg-pink-500/20 text-pink-600">&#127869;</span>
+        <span class="hub-title">Tip Calculator</span>
+        <span class="hub-desc">Split the bill &amp; tip — glassmorphic style.</span>
+      </a>
+
+      <a href="scientific.html" class="hub-card" data-name="scientific trig sin cos log advanced engine">
+        <span class="hub-icon bg-violet-500/20 text-violet-600">&sum;</span>
+        <span class="hub-title">Scientific Calculator</span>
+        <span class="hub-desc">Trig, logs, powers, memory &amp; history.</span>
+      </a>
+
+      <a href="bmi.html" class="hub-card" data-name="bmi body mass index health weight height">
+        <span class="hub-icon bg-teal-500/20 text-teal-600">&#9878;</span>
+        <span class="hub-title">BMI Calculator</span>
+        <span class="hub-desc">Body mass index from height &amp; weight.</span>
+      </a>
+
+      <a href="age.html" class="hub-card" data-name="age date of birth years months days">
+        <span class="hub-icon bg-fuchsia-500/20 text-fuchsia-600">&#128198;</span>
+        <span class="hub-title">Age Calculator</span>
+        <span class="hub-desc">Exact age in years, months &amp; days.</span>
+      </a>
+
+      <a href="percentage.html" class="hub-card" data-name="percentage percent of">
+        <span class="hub-icon bg-rose-500/20 text-rose-600">%</span>
+        <span class="hub-title">Percentage Calculator</span>
+        <span class="hub-desc">Percent of a number, or reverse it.</span>
+      </a>
+
+      <a href="discount.html" class="hub-card" data-name="discount sale price off">
+        <span class="hub-icon bg-amber-500/20 text-amber-600">&#127991;</span>
+        <span class="hub-title">Discount Calculator</span>
+        <span class="hub-desc">Sale price after a percentage off.</span>
+      </a>
+
+      <a href="interest.html" class="hub-card" data-name="simple interest principal rate time">
+        <span class="hub-icon bg-teal-500/20 text-teal-600">&#8377;</span>
+        <span class="hub-title">Simple Interest</span>
+        <span class="hub-desc">Interest &amp; total on principal &amp; rate.</span>
+      </a>
+
+      <a href="emi.html" class="hub-card" data-name="emi loan monthly installment bank">
+        <span class="hub-icon bg-violet-500/20 text-violet-600">&#127974;</span>
+        <span class="hub-title">EMI / Loan Calculator</span>
+        <span class="hub-desc">Monthly installment on a loan.</span>
+      </a>
+
+      <a href="unit.html" class="hub-card" data-name="unit converter length weight temperature meters kg">
+        <span class="hub-icon bg-fuchsia-500/20 text-fuchsia-600">&#8644;</span>
+        <span class="hub-title">Unit Converter</span>
+        <span class="hub-desc">Length, weight &amp; temperature units.</span>
+      </a>
+
+      <a href="datediff.html" class="hub-card" data-name="date difference days between two dates">
+        <span class="hub-icon bg-rose-500/20 text-rose-600">&Delta;d</span>
+        <span class="hub-title">Date Difference</span>
+        <span class="hub-desc">Days between two calendar dates.</span>
+      </a>
+
+    </div>
+
+    <p id="hubNoMatch" class="text-center text-[#b3a8ce] text-sm mt-6 hidden">No calculator matches that search.</p>
+  </section>
+
+  <footer class="text-center mt-6 text-xs text-[#b3a8ce]">
+    Built with semantic HTML, Flexbox + Grid, responsive media queries, CSS animations, Tailwind, and vanilla JavaScript.
+  </footer>
+
+</div>
+
+<script src="hub.js"></script>
+
+</body>
+</html>

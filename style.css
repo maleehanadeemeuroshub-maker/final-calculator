@@ -1,0 +1,489 @@
+/* ============================================
+     CUSTOM CSS — Animations, Transitions, Transform
+     Soft • Sparkly • Light pastel theme
+     ============================================ */
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    overflow-x: hidden;
+  }
+
+  body {
+    background:
+      radial-gradient(circle at 15% 10%, #ffe3f1 0%, transparent 45%),
+      radial-gradient(circle at 85% 15%, #dcefff 0%, transparent 50%),
+      radial-gradient(circle at 50% 90%, #e3fff5 0%, transparent 55%),
+      linear-gradient(180deg, #fdf7ff 0%, #f5f3ff 45%, #fef9f2 100%);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    position: relative;
+  }
+
+  /* Ambient floating glow orbs drifting behind the app — soft pastel light */
+  body::before,
+  body::after {
+    content: '';
+    position: fixed;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.45;
+    z-index: 0;
+    pointer-events: none;
+  }
+  body::before {
+    background: #ffc6e0;
+    top: -110px;
+    left: -110px;
+    animation: floatBlob 13s ease-in-out infinite;
+  }
+  body::after {
+    background: #a9e8dc;
+    bottom: -130px;
+    right: -110px;
+    animation: floatBlob 16s ease-in-out infinite reverse;
+  }
+  @keyframes floatBlob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50%      { transform: translate(45px, 35px) scale(1.15); }
+  }
+
+  .app-shell,
+  header {
+    position: relative;
+    z-index: 1;
+  }
+
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .app-shell { animation: fadeSlideIn 0.6s ease-out; }
+
+  /* Twinkling sparkle decorations near the title */
+  .sparkle {
+    position: absolute;
+    font-size: 1.1rem;
+    color: #d9b8ff;
+    text-shadow: 0 0 8px rgba(217, 184, 255, 0.8);
+    animation: twinkle 2.6s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .sparkle.s2 { animation-delay: 0.9s; color: #6ee7d3; text-shadow: 0 0 8px rgba(110, 231, 211, 0.8); }
+  .sparkle.s3 { animation-delay: 1.6s; color: #ffc857; text-shadow: 0 0 8px rgba(255, 200, 87, 0.8); }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.35; transform: scale(0.75) rotate(0deg); }
+    50%      { opacity: 1;    transform: scale(1.15) rotate(20deg); }
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 0px rgba(217, 184, 255, 0.0); }
+    50%      { box-shadow: 0 0 26px rgba(217, 184, 255, 0.45); }
+  }
+  .display-glow { animation: glowPulse 3s ease-in-out infinite; }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+  }
+  .shake { animation: shake 0.4s ease-in-out; }
+
+  /* Little pop whenever the displayed number changes */
+  @keyframes digitPop {
+    0%   { transform: scale(0.85); opacity: 0.55; }
+    60%  { transform: scale(1.04); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .digit-pop { animation: digitPop 0.18s ease-out; transform-origin: right center; }
+
+  .calc-btn {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(180, 160, 220, 0.18);
+    transition: transform 0.12s ease, filter 0.15s ease, box-shadow 0.15s ease;
+  }
+  .calc-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.03);
+    box-shadow: 0 6px 16px rgba(180, 140, 220, 0.28);
+  }
+  .calc-btn:active { transform: scale(0.93); }
+
+  /* Ripple that expands from the click point */
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    background: rgba(255, 255, 255, 0.65);
+    pointer-events: none;
+    animation: rippleAnim 0.5s ease-out;
+  }
+  @keyframes rippleAnim {
+    to { transform: scale(2.6); opacity: 0; }
+  }
+
+  /* Tiny sparkle burst fired from the equals button on a successful calc */
+  .spark-particle {
+    position: fixed;
+    font-size: 13px;
+    color: #2dd4b3;
+    pointer-events: none;
+    z-index: 50;
+    animation: sparkFly 0.6s ease-out forwards;
+  }
+  @keyframes sparkFly {
+    to { transform: translate(var(--dx), var(--dy)) scale(0); opacity: 0; }
+  }
+
+  @keyframes equalsBurst {
+    0%   { box-shadow: 0 0 0 0 rgba(45, 212, 180, 0.5); }
+    100% { box-shadow: 0 0 0 22px rgba(45, 212, 180, 0); }
+  }
+  .equals-burst { animation: equalsBurst 0.5s ease-out; }
+
+  .mode-btn {
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.15s ease;
+  }
+  .mode-btn:active { transform: scale(0.95); }
+
+  .mode-toggle-thumb {
+    transition: transform 0.25s ease;
+  }
+  .mode-toggle.rad .mode-toggle-thumb {
+    transform: translateX(100%);
+  }
+
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(16px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  .history-item {
+    animation: slideInRight 0.3s ease-out;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  .history-item:hover {
+    transform: translateX(-3px);
+    border-color: rgba(217, 184, 255, 0.6);
+  }
+
+  /* ============================================
+     MEDIA QUERIES — Responsive Design
+     ============================================ */
+
+  @media (max-width: 480px) {
+    .calc-btn { font-size: 14px; padding: 9px 0; }
+    .display-current { font-size: 26px; }
+    .grid { gap: 6px !important; }
+  }
+
+  @media (max-width: 360px) {
+    .calc-btn { font-size: 12px; padding: 7px 0; }
+    .display-current { font-size: 22px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* ============================================
+     HUB + MULTI-CALCULATOR VIEW SWITCHING
+     ============================================ */
+
+  .calc-view {
+    display: none;
+  }
+  .calc-view.active {
+    display: block;
+    animation: fadeSlideIn 0.35s ease-out;
+  }
+
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #a78bfa;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+    padding: 6px 4px;
+    transition: color 0.15s ease, transform 0.15s ease;
+  }
+  .back-btn:hover { color: #7c5cd6; transform: translateX(-3px); }
+
+  /* Hub tool-picker cards — soft glass, shiny on hover */
+  .hub-card,
+  .back-btn {
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .hub-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(217, 184, 255, 0.35);
+    border-radius: 16px;
+    padding: 18px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 6px 18px rgba(190, 160, 230, 0.14);
+    transition: transform 0.15s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .hub-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(217, 184, 255, 0.7);
+    box-shadow: 0 12px 30px rgba(190, 140, 230, 0.24);
+  }
+  .hub-card:active { transform: translateY(-1px) scale(0.98); }
+  .hub-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .hub-title {
+    color: #3d3557;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .hub-desc {
+    color: #8b7fa8;
+    font-size: 0.78rem;
+    line-height: 1.35;
+  }
+
+  /* Shared "tool" styling for the simple calculators — soft glass card */
+  .tool-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(217, 184, 255, 0.35);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 20px 45px rgba(190, 160, 230, 0.18);
+  }
+  .tool-title {
+    color: #3d3557;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+  }
+  .tool-label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: #8b7fa8;
+  }
+  .tool-input {
+    background: #fdfaff;
+    color: #3d3557;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    outline: none;
+    border: 1px solid rgba(217, 184, 255, 0.4);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .tool-input:focus {
+    border-color: #a78bfa;
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.15);
+  }
+  .tool-btn-primary {
+    background: linear-gradient(135deg, #6ee7d3, #93e8ff);
+    color: #0f4a42;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 11px 0;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 14px rgba(110, 231, 211, 0.35);
+    transition: filter 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
+  }
+  .tool-btn-primary:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 6px 18px rgba(110, 231, 211, 0.5);
+  }
+  .tool-btn-primary:active { transform: scale(0.97); }
+  .tool-result {
+    background: #fdfaff;
+    border: 1px solid rgba(110, 231, 211, 0.5);
+    border-radius: 12px;
+    padding: 14px;
+    color: #3d3557;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    animation: fadeSlideIn 0.3s ease-out;
+  }
+  .tool-result .tool-result-big {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2aab93;
+  }
+
+  /* ============================================
+     GLASSMORPHIC CARD — frosted-glass variant
+     Used by the Tip Calculator
+     ============================================ */
+
+  .glass-wrap {
+    position: relative;
+    padding: 2px;
+    border-radius: 22px;
+    overflow: hidden;
+  }
+  /* floating color blobs seen "through" the frosted glass */
+  .glass-wrap::before,
+  .glass-wrap::after {
+    content: '';
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    filter: blur(50px);
+    opacity: 0.55;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .glass-wrap::before {
+    background: #ff9fd0;
+    top: -60px;
+    left: -50px;
+    animation: floatBlob 11s ease-in-out infinite;
+  }
+  .glass-wrap::after {
+    background: #7fe0ff;
+    bottom: -60px;
+    right: -40px;
+    animation: floatBlob 14s ease-in-out infinite reverse;
+  }
+
+  .glass-card {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(22px) saturate(160%);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 20px;
+    padding: 22px;
+    box-shadow:
+      0 8px 32px rgba(120, 90, 180, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+  /* subtle diagonal shine across the top of the glass */
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 50%;
+    border-radius: 20px 20px 50% 50% / 20px 20px 30px 30px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.35), rgba(255,255,255,0));
+    pointer-events: none;
+  }
+
+  .glass-title {
+    color: #3d3557;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+  .glass-label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: #5b4d80;
+    font-weight: 600;
+  }
+  .glass-input {
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(8px);
+    color: #3d3557;
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+  .glass-input:focus {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 0 3px rgba(255, 159, 208, 0.25);
+  }
+  .glass-chip-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .glass-chip {
+    flex: 1;
+    min-width: 56px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    padding: 8px 0;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #5b4d80;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
+  }
+  .glass-chip:hover { transform: translateY(-2px); }
+  .glass-chip.active {
+    background: linear-gradient(135deg, rgba(255,159,208,0.55), rgba(127,224,255,0.55));
+    border-color: rgba(255, 255, 255, 0.9);
+    color: #3d3557;
+    box-shadow: 0 4px 14px rgba(150, 120, 220, 0.3);
+  }
+  .glass-btn-primary {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255,159,208,0.85), rgba(127,224,255,0.85));
+    backdrop-filter: blur(6px);
+    color: #3d2f57;
+    font-weight: 700;
+    border-radius: 12px;
+    padding: 11px 0;
+    font-size: 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 6px 18px rgba(150, 120, 220, 0.3);
+    transition: filter 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
+  }
+  .glass-btn-primary:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 8px 22px rgba(150, 120, 220, 0.42);
+  }
+  .glass-btn-primary:active { transform: scale(0.97); }
+  .glass-result {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 14px;
+    padding: 16px;
+    color: #3d3557;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    animation: fadeSlideIn 0.3s ease-out;
+  }
+  .glass-result .glass-result-big {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #2aab93;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
