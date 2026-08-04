@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Percentage Calculator — Calculator Hub</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23f3ecfd%22/><text x=%2250%22 y=%2265%22 font-size=%2255%22 text-anchor=%22middle%22 fill=%22%232aab93%22 font-family=%22Arial%22>=</text></svg>">
+
+<!-- Tailwind CSS (utility-first framework) -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="min-h-screen flex items-start justify-center p-3 sm:p-4">
+
+<div class="w-full max-w-5xl app-shell">
+
+  <header class="text-center mb-4 sm:mb-6 relative">
+    <span class="sparkle s1" style="left:8%; top:-6px;">✨</span>
+    <span class="sparkle s2" style="right:10%; top:2px;">✨</span>
+    <span class="sparkle s3" style="right:22%; bottom:-10px;">✦</span>
+    <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-[#3d3557] tracking-wide">Calculator Hub</h1>
+  </header>
+
+  <a href="index.html" class="back-btn">← All calculators</a>
+
+  <section>
+    <div class="tool-card w-full max-w-md mx-auto flex flex-col gap-5">
+      <h2 class="tool-title">Percentage Calculator</h2>
+
+      <div class="flex flex-col gap-3">
+        <p class="text-sm text-[#8b7fa8]">What is <span class="text-[#5b4d80] font-semibold">X%</span> of <span class="text-[#5b4d80] font-semibold">Y</span>?</p>
+        <div class="flex gap-2">
+          <input id="pctX1" type="number" class="tool-input" placeholder="X %">
+          <input id="pctY1" type="number" class="tool-input" placeholder="Y">
+        </div>
+        <button id="pctCalcBtn1" class="tool-btn-primary">Calculate</button>
+        <div id="pctResult1" class="tool-result hidden"></div>
+      </div>
+
+      <div class="flex flex-col gap-3 pt-4 border-t border-[#efe6fb]">
+        <p class="text-sm text-[#8b7fa8]"><span class="text-[#5b4d80] font-semibold">X</span> is what percent of <span class="text-[#5b4d80] font-semibold">Y</span>?</p>
+        <div class="flex gap-2">
+          <input id="pctX2" type="number" class="tool-input" placeholder="X">
+          <input id="pctY2" type="number" class="tool-input" placeholder="Y">
+        </div>
+        <button id="pctCalcBtn2" class="tool-btn-primary">Calculate</button>
+        <div id="pctResult2" class="tool-result hidden"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center mt-6 text-xs text-[#b3a8ce]">
+    Built with semantic HTML, Flexbox + Grid, responsive media queries, CSS animations, Tailwind, and vanilla JavaScript.
+  </footer>
+
+</div>
+
+<script src="shared.js"></script>
+<script src="percentage.js"></script>
+
+</body>
+</html>
