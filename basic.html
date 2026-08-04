@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basic Calculator — Calculator Hub</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23f3ecfd%22/><text x=%2250%22 y=%2265%22 font-size=%2255%22 text-anchor=%22middle%22 fill=%22%232aab93%22 font-family=%22Arial%22>=</text></svg>">
+
+<!-- Tailwind CSS (utility-first framework) -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="min-h-screen flex items-start justify-center p-3 sm:p-4">
+
+<div class="w-full max-w-5xl app-shell">
+
+  <header class="text-center mb-4 sm:mb-6 relative">
+    <span class="sparkle s1" style="left:8%; top:-6px;">✨</span>
+    <span class="sparkle s2" style="right:10%; top:2px;">✨</span>
+    <span class="sparkle s3" style="right:22%; bottom:-10px;">✦</span>
+    <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-[#3d3557] tracking-wide">Calculator Hub</h1>
+  </header>
+
+  <a href="index.html" class="back-btn">← All calculators</a>
+
+  <section>
+    <div class="tool-card w-full max-w-[380px] mx-auto flex flex-col gap-3 sm:gap-4">
+      <div class="display-glow bg-white/85 rounded-xl p-4 text-right border border-[#e8def7] relative">
+        <div id="basicPreviousText" class="text-sm text-[#a89bc4] min-h-[18px]"></div>
+        <div id="basicCurrentText" class="display-current text-3xl font-semibold text-[#3d3557] break-all">0</div>
+      </div>
+      <div class="grid grid-cols-4 gap-2">
+        <button class="calc-btn bg-rose-200 hover:bg-rose-300 text-[#7a2540] rounded-lg text-sm font-semibold" data-basic-action="clear">AC</button>
+        <button class="calc-btn bg-rose-200 hover:bg-rose-300 text-[#7a2540] rounded-lg text-sm font-semibold" data-basic-action="delete">DEL</button>
+        <button class="calc-btn bg-amber-300 hover:bg-amber-200 text-[#5b3d12] font-semibold rounded-lg" data-basic-op="%">%</button>
+        <button class="calc-btn bg-amber-300 hover:bg-amber-200 text-[#5b3d12] font-semibold rounded-lg" data-basic-op="/">&divide;</button>
+
+        <button class="calc-btn bg-white/80 hover:bg-[#f3ecfd] text-[#3d3557] rounded-lg border border-[#e8def7]" data-basic-num="7">7</button>
+        <button class="calc-btn bg-white/80 hover:bg-[#f3ecfd] text-[#3d3557] rounded-lg border border-[#e8def7]" data-basic-num="8">8</button>
+        <button class="calc-btn bg-white/80 hover:bg-[#f3ecfd] text-[#3d3557] rounded-lg border border-[#e8def7]" data-basic-num="9">9</button>
+        <button class="calc-btn bg-amber-300 hover:bg-amber-200 text-[#5b3d12] font-semibold rounded-lg" data-basic-op="*">&times;</button>
+
+        <button class="calc-btn bg-white/80 hover:bg-[#f3ecfd] text-[#3d3557] rounded-lg border border-[#e8def7]" data-basic-num="4">4</button>
+        <button class="calc-btn bg-white/80 hover:bg-[#f3ecfd] text-[#3d3557] rounded-lg border border-[#e8def7]" data-basic-num="5">5</button>
+        <button class="calc-btn bg-white/80 hover:bg-[#f3ecfd] text-[#3d3557] rounded-lg border border-[#e8def7]" data-basic-num="6">6</button>
+        <button class="calc-btn bg-amber-300 hover:bg-amber-200 text-[#5b3d12] font-semibold rounded-lg" data-basic-op="-">&minus;</button>
+
+        <button class="calc-btn bg-white/80 hover:bg-[#f3ecfd] text-[#3d3557] rounded-lg border border-[#e8def7]" data-basic-num="1">1</button>
+        <button class="calc-btn bg-white/80 hover:bg-[#f3ecfd] text-[#3d3557] rounded-lg border border-[#e8def7]" data-basic-num="2">2</button>
+        <button class="calc-btn bg-white/80 hover:bg-[#f3ecfd] text-[#3d3557] rounded-lg border border-[#e8def7]" data-basic-num="3">3</button>
+        <button class="calc-btn bg-amber-300 hover:bg-amber-200 text-[#5b3d12] font-semibold rounded-lg" data-basic-op="+">+</button>
+
+        <button class="calc-btn bg-white/80 hover:bg-[#f3ecfd] text-[#3d3557] rounded-lg border border-[#e8def7]" data-basic-action="negate">+/&minus;</button>
+        <button class="calc-btn bg-white/80 hover:bg-[#f3ecfd] text-[#3d3557] rounded-lg border border-[#e8def7]" data-basic-num="0">0</button>
+        <button class="calc-btn bg-white/80 hover:bg-[#f3ecfd] text-[#3d3557] rounded-lg border border-[#e8def7]" data-basic-num=".">.</button>
+        <button class="calc-btn bg-teal-300 hover:bg-teal-200 text-[#0f4a42] font-bold rounded-lg text-xl" data-basic-action="equals">=</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center mt-6 text-xs text-[#b3a8ce]">
+    Built with semantic HTML, Flexbox + Grid, responsive media queries, CSS animations, Tailwind, and vanilla JavaScript.
+  </footer>
+
+</div>
+
+<script src="shared.js"></script>
+<script src="basic.js"></script>
+
+</body>
+</html>
